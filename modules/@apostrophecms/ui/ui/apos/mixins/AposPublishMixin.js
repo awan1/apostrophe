@@ -19,6 +19,8 @@ export default {
     async publish(doc) {
       const previouslyPublished = !!doc.lastPublishedAt;
       const action = window.apos.modules[doc.type].action;
+      console.log('PUBLISH');
+      console.log(doc);
       try {
         doc = await apos.http.post(`${action}/${doc._id}/publish`, {
           body: {},

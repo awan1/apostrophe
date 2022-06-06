@@ -27,6 +27,7 @@ module.exports = {
   'cloud-upload-icon': 'CloudUpload',
   'code-tags-icon': 'CodeTags',
   'cog-icon': 'Cog',
+  'comment-text-multiple-outline': 'CommentTextMultipleOutline',
   'cursor-default-click-icon': 'CursorDefaultClick',
   'content-copy-icon': 'ContentCopy',
   'clipboard-plus-icon': 'ClipboardPlus',

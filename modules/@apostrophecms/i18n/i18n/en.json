@@ -300,6 +300,7 @@
   "redoTooltipNoChanges": "No Changes to Redo",
   "redoFailed": "The operation could not be redone.",
   "remove": "Remove",
+  "removeComment": "Remove Comment",
   "removeItem": "Remove Item",
   "removeLink": "Remove Link",
   "replace": "Replace",

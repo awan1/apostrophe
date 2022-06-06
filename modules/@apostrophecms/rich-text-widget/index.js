@@ -158,6 +158,11 @@ module.exports = {
         label: 'apostrophe:richTextHighlight',
         icon: 'format-color-highlight-icon',
         command: 'toggleHighlight'
+      },
+      comment: {
+        component: 'AposTiptapComment',
+        label: 'apostrophe:comment',
+        icon: 'comment-text-multiple-outline',
       }
     },
     // Additional properties used in executing tiptap commands

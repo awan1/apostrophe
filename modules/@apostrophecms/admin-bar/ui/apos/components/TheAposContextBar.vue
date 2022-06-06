@@ -315,11 +315,14 @@ export default {
       }
     },
     async save() {
+      console.log('SAVE!!');
       // More patches could get pushed during the async call to
       // send the previous batch, so keep going until we clear
       // the queue
       while (this.patchesSinceSave.length) {
         const patchesSinceSave = this.patchesSinceSave;
+        console.log('patchesSinceSave');
+        console.log(patchesSinceSave);
         this.retrying = false;
         this.saving = true;
         this.patchesSinceSave = [];
@@ -329,9 +332,13 @@ export default {
             _patches: patchesSinceSave
           };
           this.addLockToRequest(body);
+          console.log('body');
+          console.log(body);
           const doc = await apos.http.patch(`${this.action}/${this.context._id}`, {
             body
           });
+          console.log('doc');
+          console.log(doc);
           this.context = doc;
           this.retrying = false;
         } catch (e) {
@@ -453,7 +460,12 @@ export default {
       this.rememberLastBaseContext();
     },
     onContextEdited(patch) {
+      console.log('original patch');
+      console.log(patch);
+
       patch = klona(patch);
+      console.log('post-klona patch');
+      console.log(patch);
       this.patchesSinceLoaded.push(patch);
       this.patchesSinceSave.push(patch);
       this.undone = [];
