@@ -278,7 +278,10 @@ module.exports = {
         const output = self.apos.schema.newInstance(self.schema);
         const schema = self.allowedSchema(req);
         output._id = self.apos.launder.id(input._id) || self.apos.util.generateId();
+        // console.log('in widget-type sanitize')
+        // console.log(output)
         await self.apos.schema.convert(req, schema, input, output);
+        // console.log(output);
         output.metaType = 'widget';
         output.type = self.name;
         return output;

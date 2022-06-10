@@ -34,7 +34,11 @@ module.exports = (self) => {
         // Always recover graciously and import something reasonable, like an empty area
         items = [];
       }
+      // console.log('items before sanitization');
+      // console.log(items);
       items = await self.apos.area.sanitizeItems(req, items, field.options || {});
+      // console.log('items after sanitization');
+      // console.log(items);
       destination[field.name] = {
         _id,
         items,

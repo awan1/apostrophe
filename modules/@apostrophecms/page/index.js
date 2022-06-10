@@ -668,7 +668,10 @@ database.`);
           if (!page._edit) {
             throw self.apos.error('forbidden');
           }
+          console.log('BE patches');
+          
           const patches = Array.isArray(input._patches) ? input._patches : [ input ];
+          console.log(patches);
           // Conventional for loop so we can handle the last one specially
           for (let i = 0; (i < patches.length); i++) {
             const input = patches[i];
@@ -687,7 +690,11 @@ database.`);
             }
             self.enforceParkedProperties(req, page, input);
             if (possiblePatchedFields) {
+              console.log('input right before applyPatch');
+              console.log(input);
               await self.applyPatch(req, page, input);
+              console.log('after applyPatch...')
+              console.log(page.main.items[0])
             }
             if (i === (patches.length - 1)) {
               if (possiblePatchedFields) {

@@ -407,10 +407,16 @@ module.exports = {
           ...options
         };
 
+        // console.log('before super(sanitize)')
         const output = await _super(req, input, rteOptions);
+        // console.log('after super(sanitize)')
+        // console.log(input);
+        // console.log(output);
+
         const finalOptions = self.optionsToSanitizeHtml(rteOptions);
 
         output.content = sanitizeHtml(input.content, finalOptions);
+        output.comments = input.comments;
         return output;
       },
       // Add on the core default options to use, if needed.

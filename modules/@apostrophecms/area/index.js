@@ -271,8 +271,12 @@ module.exports = {
             continue;
           }
           let newItem;
+          console.log('item right before sanitize');
+          console.log(item)
           try {
             newItem = await manager.sanitize(req, item, widgetOptions);
+            console.log('newItem, after sanitize')
+            console.log(newItem);
             newItem._id = self.apos.launder.id(item._id) || self.apos.util.generateId();
           } catch (e) {
             if (Array.isArray(e)) {

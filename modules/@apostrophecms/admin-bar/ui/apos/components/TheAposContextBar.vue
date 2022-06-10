@@ -315,17 +315,26 @@ export default {
       }
     },
     async save() {
-      console.log('SAVE!!');
+      console.log('SAVE!!!');
       // More patches could get pushed during the async call to
       // send the previous batch, so keep going until we clear
       // the queue
       while (this.patchesSinceSave.length) {
         const patchesSinceSave = this.patchesSinceSave;
-        console.log('patchesSinceSave');
+        console.log('patchesSinceSave:');
         console.log(patchesSinceSave);
         this.retrying = false;
         this.saving = true;
         this.patchesSinceSave = [];
+
+/*
+        console.log('patchesSinceSave[0][id]');
+        console.log(patchesSinceSave[0]['@cl3eyj2h4000i3f62xyu48exz']);
+        patchesSinceSave[0]['@cl3eyj2h4000i3f62xyu48exz'].comments = '2'; //[{'testCommentId': 1}]
+        console.log('after edit');
+        console.log(patchesSinceSave[0]['@cl3eyj2h4000i3f62xyu48exz']);
+        */
+
         try {
           this.saved = false;
           const body = {
@@ -334,6 +343,7 @@ export default {
           this.addLockToRequest(body);
           console.log('body');
           console.log(body);
+          
           const doc = await apos.http.patch(`${this.action}/${this.context._id}`, {
             body
           });
